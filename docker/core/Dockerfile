@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
-RUN apt-get install dialog apt-utils \
+RUN apt-get install dialog \
+    && apt-utils \
     && apt-get update \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:ubuntu-toolchain-r/test \
