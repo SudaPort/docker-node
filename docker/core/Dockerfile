@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04.5
 
 RUN apt-get install dialog 
 RUN apt-utils 
