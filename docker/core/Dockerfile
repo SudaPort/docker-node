@@ -29,4 +29,4 @@ RUN mkdir /scripts
 
 COPY ./scripts /scripts
 
-CMD ["/scripts/entrypoint.sh"]
+CMD ["chmod", "+x", "/scripts/entrypoint.sh"]
