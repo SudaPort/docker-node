@@ -24,7 +24,7 @@ RUN ln -s /usr/bin/g++-4.9 /usr/bin/g++
 RUN git submodule init 
 RUN git submodule update 
 RUN chmod +x ./autogen.sh
-RUN ./autogen.sh 
+RUN ./autogen.sh
 RUN ./configure 
 RUN make 
 RUN make install
