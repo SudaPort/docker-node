@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 RUN apt-get update
 RUN apt-get install dialog 
@@ -6,9 +6,10 @@ RUN apt-get install -y apt-utils
 # RUN apt-utils 
 RUN apt-get update 
 RUN apt-get install -y software-properties-common 
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test 
+# RUN add-apt-repository ppa:ubuntu-toolchain-r/test 
 RUN apt-get update 
-RUN apt-get install -y git curl build-essential pkg-config autoconf automake libtool bison flex libpq-dev clang++-3.5 gcc-4.9 g++-4.9 cpp-4.9 git postgresql
+RUN apt-get install -y curl gcc g++ cpp git postgresql
+RUN apt-get install -y build-essential pkg-config autoconf automake libtool bison flex libpq-dev clang
 
 WORKDIR /vhosts
 
