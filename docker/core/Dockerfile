@@ -10,7 +10,7 @@ RUN apt-get install -y git curl build-essential pkg-config autoconf automake lib
 
 WORKDIR /vhosts
 
-RUN git clone -b mirror --depth 1 https://github.com/openbankit/core.git core
+RUN git clone -b main --depth 1 https://github.com/SudaPort/core.git core
 
 WORKDIR /vhosts/core
 
