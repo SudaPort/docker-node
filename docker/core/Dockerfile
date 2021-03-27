@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get update
 RUN apt-get install dialog 
+RUN apt-get install -y apt-utils
 RUN apt-utils 
 RUN apt-get update 
 RUN apt-get install -y software-properties-common 
