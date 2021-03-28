@@ -25,6 +25,7 @@ RUN git submodule init
 RUN git submodule update 
 RUN chmod u+w+r+x ./autogen.sh
 RUN ./autogen.sh
+RUN apt-get libsodium18
 RUN ./configure 
 RUN make 
 RUN make install
