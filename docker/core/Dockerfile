@@ -25,7 +25,7 @@ RUN git submodule init
 RUN git submodule update 
 RUN chmod u+w+r+x ./autogen.sh
 RUN ./autogen.sh
-RUN apt-get libsodium18
+RUN export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 RUN ./configure 
 RUN make 
 RUN make install
