@@ -8,11 +8,11 @@ RUN apt-get update
 RUN apt-get install -y software-properties-common 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test 
 RUN apt-get update 
-RUN apt-get install -y build-essential curl pkg-config autoconf automake libtool bison flex libpq-dev clang libclang-dev clang++ gcc g++ cpp  postgresql git iproute2 procps lsb-release cmake libsodium18 libsodium-dev parallel libunwind-dev llvm libstdc++-7-dev clang-format-8 ccache
+RUN apt-get install -y build-essential curl pkg-config autoconf automake libtool bison flex libpq-dev clang libclang-dev clang++-3.5 gcc-4.9 g++-4.9 cpp-4.9  postgresql git iproute2 procps lsb-release cmake libsodium18 libsodium-dev parallel libunwind-dev llvm-3.5 libstdc++-7-dev clang-format-8 ccache
 
 WORKDIR /vhosts
 
-RUN git clone -b master https://github.com/SudaPort/core.git core
+RUN git clone -b main https://github.com/SudaPort/core.git core
 
 WORKDIR /vhosts/core
 
@@ -26,7 +26,6 @@ RUN git submodule add https://github.com/stellar/medida.git lib/libmedida
 RUN git submodule init 
 RUN git submodule update 
 RUN chmod u+w+r+x ./autogen.sh
-RUN export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 RUN ./autogen.sh
 RUN ./configure 
 RUN make 
