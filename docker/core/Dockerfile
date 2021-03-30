@@ -12,7 +12,7 @@ RUN apt-get install -y build-essential curl pkg-config autoconf automake libtool
 
 WORKDIR /vhosts
 
-RUN git clone -b main --depth 1 https://github.com/SudaPort/core.git core
+RUN git submodule add https://github.com/SudaPort/core.git core
 
 WORKDIR /vhosts/core
 
