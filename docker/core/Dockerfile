@@ -12,7 +12,7 @@ RUN apt-get install -y build-essential curl pkg-config autoconf automake libtool
 
 WORKDIR /vhosts
 
-RUN git clone -b main https://github.com/stellar/stellar-core.git core
+RUN git clone -b master https://github.com/stellar/stellar-core.git core
 
 WORKDIR /vhosts/core
 
