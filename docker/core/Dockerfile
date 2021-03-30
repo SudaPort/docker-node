@@ -20,9 +20,10 @@ WORKDIR /vhosts/core
 RUN rm /usr/bin/g++ 
 RUN ln -s /usr/bin/g++-4.9 /usr/bin/g++
 
-# RUN git submodule init 
-# RUN git submodule update 
+RUN git submodule init 
+RUN git submodule update 
 RUN chmod u+w+r+x ./autogen.sh
+RUN export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 RUN ./autogen.sh
 RUN ./configure 
 RUN make 
