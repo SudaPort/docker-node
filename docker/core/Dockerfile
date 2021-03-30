@@ -12,7 +12,7 @@ RUN apt-get install -y build-essential curl pkg-config autoconf automake libtool
 
 WORKDIR /vhosts
 
-RUN git clone -b master https://github.com/stellar/stellar-core.git core
+RUN git clone -b master https://github.com/SudaPort/core.git core
 
 WORKDIR /vhosts/core
 
@@ -20,6 +20,9 @@ WORKDIR /vhosts/core
 RUN rm /usr/bin/g++ 
 RUN ln -s /usr/bin/g++-4.9 /usr/bin/g++
 
+RUN git submodule add https://github.com/stellar/libsodium.git lib/libsodium
+RUN git submodule add https://github.com/xdrpp/xdrpp.git lib/xdrpp
+RUN git submodule add https://github.com/stellar/medida.git lib/libmedida
 RUN git submodule init 
 RUN git submodule update 
 RUN chmod u+w+r+x ./autogen.sh
