@@ -57,7 +57,7 @@ ENV LC_ALL en_US.UTF-8
 
 WORKDIR /vhosts
 
-RUN git clone -b main https://github.com/SudaPort/core.git core
+RUN git clone -b master https://github.com/stellar/stellar-core.git core
 
 WORKDIR /vhosts/core
 
