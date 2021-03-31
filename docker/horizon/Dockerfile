@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /vhosts
 
-RUN	git clone -b master --depth 1 https://github.com/stellar/go/tree/master/services/horizon.git horizon
+RUN	git clone -b master --depth 1 https://github.com/stellar/go/tree/master/services/horizon horizon
 
 WORKDIR /vhosts/horizon
 
