@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /vhosts
 
-RUN	git clone -b mirror --depth 1 https://github.com/openbankit/horizon.git horizon
+RUN	git clone -b main --depth 1 https://github.com/sudaport/horizon.git horizon
 
 WORKDIR /vhosts/horizon
 

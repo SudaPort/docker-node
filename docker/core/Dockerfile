@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:16.04
 
 RUN apt-get install dialog apt-utils \
     && apt-get update \
@@ -9,7 +9,7 @@ RUN apt-get install dialog apt-utils \
 
 WORKDIR /vhosts
 
-RUN git clone -b mirror --depth 1 https://github.com/openbankit/core.git core
+RUN git clone -b main --depth 1 https://github.com/sudaport/core.git core
 
 WORKDIR /vhosts/core
 
