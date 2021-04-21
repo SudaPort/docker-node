@@ -2,11 +2,10 @@ FROM ubuntu:18.04
 
 RUN apt update && apt-get update
 RUN apt-get install -y clang-8 g++ pkg-config bison flex libpq-dev clang-format-8 perl libunwind-dev parallel gcc-7
-RUN apt-get install dialog apt-utils \
-    && apt-get install -y software-properties-common \
-    && add-apt-repository ppa:ubuntu-toolchain-r/test \
-    && apt-get update \
-	&& apt-get install -y git curl build-essential autoconf automake libtool gcc-4.9 cpp-4.9 git postgresql
+RUN apt-get install dialog apt-utils
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+RUN apt-get install -y git curl build-essential autoconf automake libtool gcc-4.9 cpp-4.9 git postgresql
 
 WORKDIR /vhosts
 
