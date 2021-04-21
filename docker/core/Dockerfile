@@ -1,8 +1,8 @@
 FROM ubuntu:18.04
 
+RUN apt update && apt-get update
 RUN apt-get install -y clang-8 g++ pkg-config bison flex libpq-dev clang-format-8 perl libunwind-dev parallel gcc-7
 RUN apt-get install dialog apt-utils \
-    && apt-get update \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:ubuntu-toolchain-r/test \
     && apt-get update \
