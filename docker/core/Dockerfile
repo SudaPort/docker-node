@@ -7,7 +7,7 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 RUN DEBIAN_FRONTEND="noninteractive" TZ="Africa/Cairo" apt-get -y install tzdata
-RUN apt-get install -y git curl build-essential autoconf automake libtool gcc cpp git postgresql
+RUN apt-get install -y git curl build-essential autoconf automake libtool gcc-8 cpp git postgresql
 
 WORKDIR /vhosts
 
