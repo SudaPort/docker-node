@@ -1,15 +1,12 @@
 FROM ubuntu:18.04
 
 RUN apt update && apt-get update
-RUN apt-get install -y clang-8 g++ pkg-config bison flex libpq-dev clang-format-8 perl libunwind-dev parallel gcc-7
+RUN apt-get install -y git curl build-essential autoconf automake libtool cpp  postgresql clang clang-format pkg-config bison flex libpq-dev perl libunwind-dev parallel gcc g++
 RUN apt-get install -y dialog 
 RUN apt-get install -y apt-utils
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 RUN DEBIAN_FRONTEND="noninteractive" TZ="Africa/Cairo" apt-get -y install tzdata
-RUN apt-get install -y git curl build-essential autoconf automake libtool gcc-7 g++-7 cpp git postgresql
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60
 WORKDIR /vhosts
 
 RUN git clone https://github.com/stellar/stellar-core.git
