@@ -2,7 +2,7 @@ FROM golang:1.6
 
 RUN apt-get update && apt update && apt-get install -y \
 	git \
-	&& go get github.com/constabulary/gb/...
+	&& go get github.com/sudaport/gb/...
 
 WORKDIR /vhosts
 
