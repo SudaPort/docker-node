@@ -1,5 +1,5 @@
 FROM golang:1.6
-
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50 
 RUN apt-get update && apt update && apt-get install -y \
 	git \
 	&& go get github.com/sudaport/gb/...
