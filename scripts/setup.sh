@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HOST_REGEX='(https?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6})|((https?:\/\/)?([0-9]{1,3}\.){3}([0-9]{1,3}))(\:?[0-9]{1,5})?(\/)?'
-GENSEED="$(docker run --rm crypto/core src/stellar-core --genseed)"
+GENSEED="$(docker run --rm crypto/core src/stellar-core gen-seed)"
 SEED=${GENSEED:13:56}
 PUBLIC=${GENSEED:82:56}
 IS_VALIDATOR='false'

@@ -25,7 +25,7 @@ start: build
     fi
 
 keypair: build
-	docker run --rm crypto/core src/stellar-core --genseed
+	docker run --rm crypto/core src/stellar-core gen-seed
 
 gate: build
 	./scripts/setup.sh

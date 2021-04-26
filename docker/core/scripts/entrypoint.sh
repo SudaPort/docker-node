@@ -42,14 +42,14 @@ TABLE_EXISTS=`psql -d $DB_NAME -A -c "SELECT count(*) from information_schema.ta
 
 if [[ $TABLE_EXISTS == 0 ]]; then
     echo "Initializing Dabatase"
-    # --newhist flag should run prior to --newdb!!!
-    #src/stellar-core --conf $HOME/core.cfg --newhist local
+    # --newhist flag should run prior to new-db!!!
+    #src/stellar-core -conf $HOME/core.cfg --newhist local
 
     if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-        src/stellar-core --conf $HOME/core.cfg --newhist riak
+        src/stellar-core -conf $HOME/core.cfg --newhist riak
     fi
 
-    src/stellar-core --conf $HOME/core.cfg --newdb
+    src/stellar-core -conf $HOME/core.cfg new-db
 elif [[ $TABLE_EXISTS == 1 ]]; then
     echo "DB Exists. Starting Core"
 else
@@ -58,7 +58,7 @@ else
 fi
 
 if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-    src/stellar-core --conf $HOME/core.cfg --forcescp
+    src/stellar-core -conf $HOME/core.cfg force-scp
 fi
 
-src/stellar-core --conf $HOME/core.cfg
+src/stellar-core -conf $HOME/core.cfg
