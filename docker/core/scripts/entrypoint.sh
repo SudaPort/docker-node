@@ -2,7 +2,7 @@
 
 DB_NAME="stellar"
 
-rm -f $HOME/core.cfg
+# rm -f $HOME/core.cfg
 echo "DATABASE=\"postgresql://dbname=$DB_NAME user=$PGUSER password=$PGPASSWORD host=$PGHOST\"" >> $HOME/core.cfg
 echo "HTTP_PORT=$STELLAR_HTTP_PORT"                                             >> $HOME/core.cfg
 echo "PEER_PORT=$STELLAR_PEER_PORT"                                             >> $HOME/core.cfg
