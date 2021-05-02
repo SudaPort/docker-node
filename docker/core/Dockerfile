@@ -26,5 +26,5 @@ RUN git submodule init \
 RUN mkdir /scripts
 
 COPY ./scripts /scripts
-
+RUN ["chmod", "+x", "/scripts/entrypoint.sh"]
 CMD ["/scripts/entrypoint.sh"]
