@@ -14,5 +14,5 @@ RUN gb vendor restore
 RUN gb build
 
 COPY ./entrypoint.sh /
-
+RUN ["chmod", "+x", "/entrypoint.sh"]
 CMD ["/entrypoint.sh"]
