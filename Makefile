@@ -18,23 +18,23 @@ build:
 	docker-compose build
 
 start: build
-	# @if [ ! -s ./.core-cfg ]; then \
-	#  	echo "Error: node is not configured! Run make <agent|gate|validator> first"; \
-	# else \
+	@if [ ! -s ./.core-cfg ]; then \
+	 	echo "Error: node is not configured! Run make <agent|gate|validator> first"; \
+	else \
 		docker-compose up -d; \
-    # fi
+    fi
 
 keypair: build
 	docker run --rm crypto/core src/stellar-core gen-seed
 
 gate: build
-	./scripts/setup.sh
+	sudo ./scripts/setup.sh 
 
 agent: build
-	./scripts/setup.sh
+	sudo ./scripts/setup.sh
 
 validator: build
-	./scripts/setup.sh --is-validator
+	sudo ./scripts/setup.sh --is-validator
 
 validator-add: stop
 	@if [ "${key}" = "" ]; then \
