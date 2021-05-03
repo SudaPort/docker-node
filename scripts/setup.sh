@@ -56,40 +56,40 @@ do
         break
     fi
 
-    valid="$(docker run --rm crypto/core src/stellar-core --checkseed $key)"
-    if [[ $valid == 0 ]]; then
-        echo "Error: seed is invalid. Try again."
-    else
+    # valid="$(docker run --rm crypto/core src/stellar-core --checkseed $key)"
+    # if [[ $valid == 0 ]]; then
+        # echo "Error: seed is invalid. Try again."
+    # else
         SEED=$key
         PUBLIC=$valid
         break
-    fi
+    # fi
 done
 
 while true
 do
     read -ra key -p "Master's Public Key: "
-    valid="$(docker run --rm crypto/core src/stellar-core --checkpub $key)"
-    if [[ $valid == 1 ]]; then
+    # valid="$(docker run --rm crypto/core src/stellar-core --checkpub $key)"
+    # if [[ $valid == 1 ]]; then
         MASTER_KEY=$key
         break
-    else
-        echo "Error: key is invalid. Try again."
-    fi
+    # else
+        # echo "Error: key is invalid. Try again."
+    # fi
 done
 
 while true
 do
     read -ra key -p "Fee Agent's Public Key: "
-    valid="$(docker run --rm crypto/core src/stellar-core --checkpub $key)"
-    if [[ $key == $MASTER_KEY ]]; then
-        echo "Error: fee agent's key must be different from master key."
-    elif [[ $valid == 1 ]]; then
+    # valid="$(docker run --rm crypto/core src/stellar-core --checkpub $key)"
+    # if [[ $key == $MASTER_KEY ]]; then
+        # echo "Error: fee agent's key must be different from master key."
+    # elif [[ $valid == 1 ]]; then
         COMISSION_KEY=$key
         break
-    else
-        echo "Error: key is invalid. Try again."
-    fi
+    # else
+        # echo "Error: key is invalid. Try again."
+    # fi
 done
 
 while true
