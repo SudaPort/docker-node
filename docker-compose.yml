@@ -16,8 +16,8 @@ services:
     depends_on:
       - postgres
     environment:
-      PGUSER: "${POSTGRES_USER}"
-      PGPASSWORD: "${POSTGRES_PASSWORD}"
+      PGUSER: "${POSTGRES_USER_ST}"
+      PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgres
 
   horizon:
@@ -37,8 +37,8 @@ services:
       - .core-cfg
       - .env
     environment:
-      DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/horizon?sslmode=disable"
-      STELLAR_CORE_DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/stellar?sslmode=disable"
+      DATABASE_URL: "postgres://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgres/horizon?sslmode=disable"
+      STELLAR_CORE_DATABASE_URL: "postgres://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgres/stellar?sslmode=disable"
       NETWORK_PASSPHRASE: ${NETWORK_PASSPHRASE}
       STELLAR_CORE_URL: "http://core:${STELLAR_HTTP_PORT}"
       REDIS_URL: "redis://redis:6379"
@@ -56,11 +56,11 @@ services:
       - storage:/var/lib/postgresql/data
     environment:
       PGDATA: '/var/lib/postgresql/data'
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      POSTGRES_USER: "${POSTGRES_USER}"
-    env_file:
-      - .core-cfg
-      - .env
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD_ST}"
+      POSTGRES_USER: "${POSTGRES_USER_ST}"
+      env_file:
+        - .core-cfg
+        - .env
 
   redis:
     restart: always
