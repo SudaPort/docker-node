@@ -58,9 +58,9 @@ services:
       PGDATA: '/var/lib/postgresql/data'
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD_ST}"
       POSTGRES_USER: "${POSTGRES_USER_ST}"
-      env_file:
-        - .core-cfg
-        - .env
+      # env_file:
+      #   - .core-cfg
+      #   - .env
 
   redis:
     restart: always
