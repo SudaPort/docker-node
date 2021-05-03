@@ -157,7 +157,7 @@ do
     done
 done
 
-# rm -f ./.core-cfg
+rm -f ./.core-cfg
 echo $'\n'
 echo "**************************************************************************"
 echo "Validator Node Public Key: $PUBLIC"
