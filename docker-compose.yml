@@ -35,7 +35,6 @@ services:
       - postgres
     env_file:
       - .core-cfg
-      - .env
     environment:
       DATABASE_URL: "postgres://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgres/horizon?sslmode=disable"
       STELLAR_CORE_DATABASE_URL: "postgres://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgres/stellar?sslmode=disable"
@@ -58,9 +57,6 @@ services:
       PGDATA: '/var/lib/postgresql/data'
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD_ST}"
       POSTGRES_USER: "${POSTGRES_USER_ST}"
-      # env_file:
-      #   - .core-cfg
-      #   - .env
 
   redis:
     restart: always
