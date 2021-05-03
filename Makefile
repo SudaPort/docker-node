@@ -28,13 +28,13 @@ keypair: build
 	docker run --rm crypto/core src/stellar-core gen-seed
 
 gate: build
-	sudo ./scripts/setup.sh 
+	./scripts/setup.sh 
 
 agent: build
-	sudo ./scripts/setup.sh
+	./scripts/setup.sh
 
 validator: build
-	sudo ./scripts/setup.sh --is-validator
+	./scripts/setup.sh --is-validator
 
 validator-add: stop
 	@if [ "${key}" = "" ]; then \
