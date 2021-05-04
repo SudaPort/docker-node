@@ -46,7 +46,7 @@ if [[ $TABLE_EXISTS == 0 ]]; then
     #src/stellar-core -conf $HOME/core.cfg --newhist local
 
     if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-        src/stellar-core -conf $HOME/core.cfg --newhist riak
+        src/stellar-core -conf $HOME/core.cfg newhist riak
     fi
 
     src/stellar-core -conf $HOME/core.cfg new-db
@@ -62,3 +62,4 @@ if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
 fi
 
 src/stellar-core -conf $HOME/core.cfg
+
