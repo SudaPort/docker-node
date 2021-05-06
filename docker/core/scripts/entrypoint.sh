@@ -7,7 +7,7 @@ echo "DATABASE=\"postgresql://dbname=$DB_NAME$NODE_NAME user=$PGUSER password=$P
 echo "HTTP_PORT=$STELLAR_HTTP_PORT"                                             >> $HOME/core.cfg
 echo "PEER_PORT=$STELLAR_PEER_PORT"                                             >> $HOME/core.cfg
 echo "PUBLIC_HTTP_PORT=true"                                                    >> $HOME/core.cfg
-echo "PREFERRED_PEER_KEYS=["$ONE_KEY", "$TWO_KEY"]"                             >> $HOME/core.cfg
+echo "PREFERRED_PEER_KEYS=[\"$ONE_KEY\", \"$TWO_KEY\"]"                         >> $HOME/core.cfg
 # echo "BANK_MASTER_KEY=\"$BANK_MASTER_KEY\""                                     >> $HOME/core.cfg
 # echo "BANK_COMMISSION_KEY=\"$BANK_COMMISSION_KEY\""                             >> $HOME/core.cfg
 echo "NETWORK_PASSPHRASE=\"$NETWORK_PASSPHRASE\""                               >> $HOME/core.cfg
