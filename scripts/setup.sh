@@ -76,7 +76,7 @@ done
 
 while true
 do
-    read -ra peer -p "Add preferred peer (empty line to finish): "
+    read -ra peer -p "Add preferred peer (host-ip:11645  host-ip:11635 empty line to finish): "
     if [[ $peer == '' ]]; then
         break
     fi

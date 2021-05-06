@@ -19,7 +19,7 @@ build:
 
 start: build
 	@if [ ! -s ./.core-cfg ]; then \
-	 	echo "Error: node is not configured! Run make <agent|gate|validator> first"; \
+	 	echo "Error: node is not configured! Run make <agent|master|validator> first"; \
 	else \
 		docker-compose up -d; \
     fi
@@ -27,20 +27,20 @@ start: build
 keypair: build
 	docker run --rm crypto/core src/stellar-core gen-seed
 
-gate: build
+master: build
 	./scripts/setup.sh 
 
 agent: build
-	./scripts/setup2.sh
+	./scripts/setup1.sh
 
 validator: build
-	./scripts/setup3.sh --is-validator 
+	./scripts/setup2.sh --is-validator 
 
 validator-add: stop
 	@if [ "${key}" = "" ]; then \
 	 	echo "Please use validator-add key='YOUR_KEY'"; \
     elif [ ! -s ./.core-cfg ]; then \
-        echo "Error: node is not configured! Run make <agent|gate|validator> first"; \
+        echo "Error: node is not configured! Run make <agent|master|validator> first"; \
     else \
         ./scripts/validators.sh --add=${key}; \
     fi
@@ -49,7 +49,7 @@ validator-remove: stop
 	@if [ "${key}" = "" ]; then \
 	 	echo "Please use validator-remove key='YOUR_KEY'"; \
     elif [ ! -s ./.core-cfg ]; then \
-        echo "Error: node is not configured! Run make <agent|gate|validator> first"; \
+        echo "Error: node is not configured! Run make <agent|master|validator> first"; \
     else \
         ./scripts/validators.sh --remove=${key}; \
     fi
