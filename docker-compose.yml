@@ -7,7 +7,7 @@ services:
     build: docker/core
     image: crypto/core
     ports:
-      - "${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"
+      - "11625:11625"
     env_file:
       - .env
       - .core-cfg
@@ -26,7 +26,7 @@ services:
     build: docker/core
     image: crypto/core
     ports:
-      - ${STELLAR_PEER_PORT1}:${STELLAR_PEER_PORT1}"
+      - "11635:11635"
     env_file:
       - .env
       - .core1-cfg
@@ -45,7 +45,7 @@ services:
     build: docker/core
     image: crypto/core
     ports:
-      - "${STELLAR_PEER_PORT2}:${STELLAR_PEER_PORT2}"
+      - "11645:11645"
     env_file:
       - .env
       - .core2-cfg
