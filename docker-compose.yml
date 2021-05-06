@@ -1,9 +1,9 @@
 version: '2'
 services:
 
-  core:
+  master:
     restart: always
-    container_name: dmoney-core
+    container_name: dmoney-master
     build: docker/core
     image: crypto/core
     ports:
@@ -20,7 +20,45 @@ services:
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgres
 
-  horizon:
+  fee:
+    restart: always
+    container_name: dmoney-fee
+    build: docker/core
+    image: crypto/core
+    ports:
+      - "${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"
+    env_file:
+      - .env
+      - .core1-cfg
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    environment:
+      PGUSER: "${POSTGRES_USER_ST}"
+      PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
+      PGHOST: postgres     
+
+  validator:
+    restart: always
+    container_name: dmoney-validator
+    build: docker/core
+    image: crypto/core
+    ports:
+      - "${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"
+    env_file:
+      - .env
+      - .core2-cfg
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    environment:
+      PGUSER: "${POSTGRES_USER_ST}"
+      PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
+      PGHOST: postgres
+
+  horizon: 
     restart: always
     container_name: dmoney-horizon
     build: docker/horizon

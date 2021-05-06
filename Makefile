@@ -31,10 +31,10 @@ gate: build
 	./scripts/setup.sh 
 
 agent: build
-	./scripts/setup.sh
+	./scripts/setup2.sh
 
 validator: build
-	./scripts/setup.sh --is-validator
+	./scripts/setup3.sh --is-validator 
 
 validator-add: stop
 	@if [ "${key}" = "" ]; then \

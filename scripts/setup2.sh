@@ -5,7 +5,7 @@ GENSEED="$(docker run --rm crypto/core src/stellar-core gen-seed)"
 SEED=${GENSEED:13:56}
 PUBLIC=${GENSEED:82:56}
 IS_VALIDATOR='false'
-VALIDATOR_KEY=''
+MASTER_KEY=''
 COMISSION_KEY=''
 GENERAL_KEY=''
 PEERS=''
@@ -51,26 +51,32 @@ strpos()
 
 while true
 do
-    read -ra key -p "MASTER Node Seed (leave empty to generate): "
+    read -ra key -p "VALIDATOR Node Seed (leave empty to generate): "
     if [[ $key == '' ]]; then
         break
     fi
+
+    # valid="$(docker run --rm crypto/core src/stellar-core --checkseed $key)"
+    # if [[ $valid == 0 ]]; then
+        # echo "Error: seed is invalid. Try again."
+    # else
         SEED=$key
         PUBLIC=$valid
         break
+    # fi
 done
 
 while true
 do
-    read -ra key -p "Fee Agent Public Key: "
-        COMISSION_KEY=$key
+    read -ra key -p "Master's Public Key: "
+        MASTER_KEY=$key
         break
 done
 
 while true
 do
-    read -ra key -p "Validator Public Key: "
-        VALIDATOR_KEY=$key
+    read -ra key -p "Fee Agent's Public Key: "
+        COMISSION_KEY=$key
         break
 done
 
@@ -139,28 +145,29 @@ do
     done
 done
 
-rm -f ./.core-cfg
+rm -f ./.core2-cfg
 echo $'\n'
 echo "**************************************************************************"
 echo "Validator Node Public Key: $PUBLIC" 
 echo "**************************************************************************"
 
-echo "RIAK_HOST=$RIAK_HOST" >> ./.core-cfg
+echo "RIAK_HOST=$RIAK_HOST" >> ./.core2-cfg
 if [[ $RIAK_USER != '' ]]; then
-    echo "RIAK_USER=$RIAK_USER" >> ./.core-cfg
+    echo "RIAK_USER=$RIAK_USER" >> ./.core2-cfg
 fi
 if [[ $RIAK_PASS != '' ]]; then
-    echo "RIAK_PASS=$RIAK_PASS" >> ./.core-cfg
+    echo "RIAK_PASS=$RIAK_PASS" >> ./.core2-cfg
 fi
-echo "NODE_SEED=$SEED" >> ./.core-cfg
-echo "NODE_IS_VALIDATOR=$IS_VALIDATOR" >> ./.core-cfg
-echo "ONE_KEY=$VALIDATOR_KEY" >> ./.core-cfg
-echo "TWO_KEY=$COMISSION_KEY" >> ./.core-cfg
+echo "NODE_SEED=$SEED" >> ./.core2-cfg
+echo "NODE_IS_VALIDATOR=$IS_VALIDATOR" >> ./.core2-cfg
+echo "ONE_KEY=$MASTER_KEY" >> ./.core2-cfg
+echo "TWO_KEY=$COMISSION_KEY" >> ./.core2-cfg
 
 if [[ $PEERS != '' ]]; then
-    echo "PREFERRED_PEERS=[${PEERS::-1}]" >> ./.core-cfg
+    echo "PREFERRED_PEERS=[${PEERS::-1}]" >> ./.core2-cfg
 fi
 
-echo "STELLAR_PEER_PORT=11625" >> ./.core-cfg
-echo "STELLAR_HTTP_PORT=11626" >> ./.core-cfg
-echo "NODE_NAME=master" >> ./.core-cfg
+
+echo "STELLAR_PEER_PORT=11645" >> ./.core2-cfg
+echo "STELLAR_HTTP_PORT=11646" >> ./.core2-cfg
+echo "NODE_NAME=validator" >> ./.core2-cfg

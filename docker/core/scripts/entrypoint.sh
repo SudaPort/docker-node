@@ -3,12 +3,13 @@
 DB_NAME="stellar"
 
 rm -f $HOME/core.cfg
-echo "DATABASE=\"postgresql://dbname=$DB_NAME user=$PGUSER password=$PGPASSWORD host=$PGHOST\"" >> $HOME/core.cfg
+echo "DATABASE=\"postgresql://dbname=$DB_NAME$NODE_NAME user=$PGUSER password=$PGPASSWORD host=$PGHOST\"" >> $HOME/core.cfg
 echo "HTTP_PORT=$STELLAR_HTTP_PORT"                                             >> $HOME/core.cfg
 echo "PEER_PORT=$STELLAR_PEER_PORT"                                             >> $HOME/core.cfg
 echo "PUBLIC_HTTP_PORT=true"                                                    >> $HOME/core.cfg
-echo "BANK_MASTER_KEY=\"$BANK_MASTER_KEY\""                                     >> $HOME/core.cfg
-echo "BANK_COMMISSION_KEY=\"$BANK_COMMISSION_KEY\""                             >> $HOME/core.cfg
+echo "PREFERRED_PEER_KEYS=[$ONE_KEY, $TWO_KEY]"                                 >> $HOME/core.cfg
+# echo "BANK_MASTER_KEY=\"$BANK_MASTER_KEY\""                                     >> $HOME/core.cfg
+# echo "BANK_COMMISSION_KEY=\"$BANK_COMMISSION_KEY\""                             >> $HOME/core.cfg
 echo "NETWORK_PASSPHRASE=\"$NETWORK_PASSPHRASE\""                               >> $HOME/core.cfg
 echo "NODE_SEED=\"$NODE_SEED self\""                                            >> $HOME/core.cfg
 echo "NODE_IS_VALIDATOR=$NODE_IS_VALIDATOR"                                     >> $HOME/core.cfg
@@ -66,5 +67,5 @@ if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
     # src/stellar-core --conf $HOME/core.cfg force-scp 
 fi
 src/stellar-core http-command stellar-core --conf $HOME/core.cfg
-# src/stellar-core --conf $HOME/core.cfg
+# src/stellar-core --conf $HOME/core.cfg 
 
