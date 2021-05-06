@@ -26,7 +26,7 @@ fi
 
 if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
  echo "[[VALIDATORS]]"                                                             >> $HOME/core.cfg
- echo "NAME=\"validator\""                                                         >> $HOME/core.cfg
+ echo "NAME=\"guroshval\""                                                         >> $HOME/core.cfg
  echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                               >> $HOME/core.cfg
  echo "PUBLIC_KEY=\"${VALIDATORS}\""                                               >> $HOME/core.cfg
  echo "ADDRESS=\"${HOME_DOMAIN}:11645\""                                           >> $HOME/core.cfg
