@@ -143,7 +143,7 @@ done
 rm -f ./.core1-cfg
 echo $'\n'
 echo "**************************************************************************"
-echo "Validator Node Public Key: $PUBLIC" 
+echo "Public Key: $PUBLIC" 
 echo "**************************************************************************"
 
 echo "RIAK_HOST=$RIAK_HOST" >> ./.core1-cfg
