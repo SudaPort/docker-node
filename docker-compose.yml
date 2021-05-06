@@ -1,13 +1,13 @@
 version: '2'
 services:
 
-  master:
+  core:
     restart: always
     container_name: dmoney-master
     build: docker/core
     image: crypto/core
     ports:
-      - ["${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"]
+      - "${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"
     env_file:
       - .env
       - .core-cfg
@@ -20,13 +20,13 @@ services:
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgres
 
-  fee:
+  core:
     restart: always
     container_name: dmoney-fee
     build: docker/core
     image: crypto/core
     ports:
-      - ["${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"]
+      - "${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"
     env_file:
       - .env
       - .core1-cfg
@@ -39,13 +39,13 @@ services:
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgres     
 
-  validator:
+  core:
     restart: always
     container_name: dmoney-validator
     build: docker/core
     image: crypto/core
     ports:
-      - ["${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"]
+      - "${STELLAR_PEER_PORT}:${STELLAR_PEER_PORT}"
     env_file:
       - .env
       - .core2-cfg
