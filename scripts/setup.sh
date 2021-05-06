@@ -23,7 +23,7 @@ case $i in
     shift
     ;;
     *)
-        echo "Unknown option: $i"
+        echo "${RED}Unknown option: $i ${NC}"
         exit
     ;;
 esac
@@ -51,7 +51,7 @@ strpos()
 
 while true
 do
-    read -ra key -p "MASTER Node Seed (leave empty to generate): "
+    read -ra key -p "${GREEN}MASTER Node Seed (leave empty to generate): ${NC}"
     if [[ $key == '' ]]; then
         break
     fi
@@ -62,28 +62,28 @@ done
 
 while true
 do
-    read -ra key -p "Fee Agent Public Key: "
+    read -ra key -p "${GREEN}Fee Agent Public Key: ${NC}"
         COMISSION_KEY=$key
         break
 done
 
 while true
 do
-    read -ra key -p "Validator Public Key: "
+    read -ra key -p "${GREEN}Validator Public Key: ${NC}"
         VALIDATOR_KEY=$key
         break
 done
 
 while true
 do
-    read -ra peer -p "Add preferred peer (host-ip:11645  host-ip:11635 empty line to finish): "
+    read -ra peer -p "${GREEN}Add preferred peer (host-ip:11645  host-ip:11635 empty line to finish): ${NC}"
     if [[ $peer == '' ]]; then
         break
     fi
 
     peer=${peer,,}
     if [[ ! $peer =~ $HOST_REGEX ]]; then
-        echo "Error: Peer address [$peer] is not valid!"
+        echo "${RED}Error: Peer address [$peer] is not valid!${NC}"
         continue
     fi
 
@@ -94,23 +94,23 @@ do
     peer=${peer// }
     exists="$(strpos \"$PEERS\" \"$peer\")"
     if [[ $exists != '' ]]; then
-        echo "Error: Peer address [$peer] already added!"
+        echo "${RED}Error: Peer address [$peer] already added!${NC}"
         continue
     fi
 
-    echo "$peer added to preferred!"
+    echo "$peer ${GREEN}added to preferred!${NC}"
 
     PEERS+=\"$peer:11625\",
 done
 
 while true
 do
-    read -ra peer -p "Riak Host: (with protocol and port)"
+    read -ra peer -p "${GREEN}Riak Host: (with protocol and port: )${NC}"
     peer=${peer,,}
 
     if [[ ! $peer =~ $HOST_REGEX ]]
     then
-        echo "Error: riak host [$peer] is not valid!"
+        echo "${RED}Error: riak host [$peer] is not valid!${NC}"
         continue
     fi
     peer=${peer%%+(/)}
@@ -121,7 +121,7 @@ done
 
 while true
 do
-    read -ra key -p "Riak username [leave empty to skip]: "
+    read -ra key -p "${GREEN}Riak username [leave empty to skip]:${NC} "
     if [[ $key == '' ]]; then
         break
     fi
@@ -129,20 +129,20 @@ do
     RIAK_USER=$key
     while true
     do
-        IFS= read -s  -p "Riak password: " key
+        IFS= read -s  -p "${GREEN}Riak password: ${NC}" key
         if [[ $key != '' ]]; then
             RIAK_PASS=$key
             break 2
         fi
 
-        echo "Password cannot be empty"
+        echo "${RED}Password cannot be empty${NC}"
     done
 done
 
 rm -f ./.core-cfg
 echo $'\n'
 echo "**************************************************************************"
-echo "Public Key: $PUBLIC" 
+echo "${GREEN}Public Key: $PUBLIC ${NC}" 
 echo "**************************************************************************"
 
 echo "RIAK_HOST=$RIAK_HOST" >> ./.core-cfg
