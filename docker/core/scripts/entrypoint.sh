@@ -20,15 +20,18 @@ if [ ! -z "$PREFERRED_PEERS" ]; then
     echo "PREFERRED_PEERS=$PREFERRED_PEERS"                                     >> $HOME/core.cfg
 fi
 
-echo "[QUORUM_SET]"                                                             >> $HOME/core.cfg
-echo "THRESHOLD_PERCENT=$THRESHOLD_PERCENT"                                     >> $HOME/core.cfg
-if [ ! -z $VALIDATORS ] && [ $NODE_IS_VALIDATOR == 'true' ] ; then
-    echo "VALIDATORS=[\"${VALIDATORS}\", \"\$self\"]"                          >> $HOME/core.cfg
-elif [[ ! -z $VALIDATORS ]]; then
-    echo "VALIDATORS=[\"${VALIDATORS}\"]"                                      >> $HOME/core.cfg
-elif [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-    echo "VALIDATORS=[\"\$self\"]"                                              >> $HOME/core.cfg
+if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
+    echo "NODE_HOME_DOMAIN==\"${HOME_DOMAIN}\""                                 >> $HOME/core.cfg
 fi 
+
+if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
+ echo "[[VALIDATORS]]"                                                             >> $HOME/core.cfg
+ echo "NAME=validator"                                                             >> $HOME/core.cfg
+ echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                               >> $HOME/core.cfg
+ echo "PUBLIC_KEY=\"${VALIDATORS}\""                                               >> $HOME/core.cfg
+ echo "ADDRESS=\"${HOME_DOMAIN}:11645\""                                           >> $HOME/core.cfg
+
+fi
 
 echo "[HISTORY.riak]"                                                           >> $HOME/core.cfg
 echo "get=\"/scripts/riakget.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> $HOME/core.cfg

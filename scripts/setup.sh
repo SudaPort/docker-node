@@ -164,4 +164,7 @@ fi
 echo "STELLAR_PEER_PORT=11625" >> ./.core-cfg
 echo "STELLAR_HTTP_PORT=11626" >> ./.core-cfg
 echo "NODE_NAME=master" >> ./.core-cfg
-echo "VALIDATORS=$VALIDATOR_KEY" >> ./.core2-cfg
+echo "VALIDATORS=$VALIDATOR_KEY" >> ./.core-cfg
+read -ra key -p "${GREEN}HOME DOMAIN: ${NC}"
+        HOME_DOMAIN=$key
+echo "HOME_DOMAIN=$HOME_DOMAIN" >> ./.core-cfg
