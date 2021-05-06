@@ -1,5 +1,7 @@
 #!/bin/bash
-
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+NC=`tput sgr0`
 HOST_REGEX='(https?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6})|((https?:\/\/)?([0-9]{1,3}\.){3}([0-9]{1,3}))(\:?[0-9]{1,5})?(\/)?'
 GENSEED="$(docker run --rm crypto/core src/stellar-core gen-seed)"
 SEED=${GENSEED:13:56}
