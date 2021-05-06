@@ -24,7 +24,7 @@ services:
     restart: always
     container_name: dmoney-fee
     build: docker/core
-    image: crypto/core
+    image: crypto/fee
     ports:
       - "11635:11635"
     env_file:
@@ -43,7 +43,7 @@ services:
     restart: always
     container_name: dmoney-validator
     build: docker/core
-    image: crypto/core
+    image: crypto/validator
     ports:
       - "11645:11645"
     env_file:
