@@ -21,7 +21,7 @@ if [ ! -z "$PREFERRED_PEERS" ]; then
 fi
 
 if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-    echo "NODE_HOME_DOMAIN==\"${HOME_DOMAIN}\""                                 >> $HOME/core.cfg
+    echo "NODE_HOME_DOMAIN=\"${HOME_DOMAIN}\""                                 >> $HOME/core.cfg
 fi 
 
 if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
