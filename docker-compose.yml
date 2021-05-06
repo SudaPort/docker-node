@@ -3,7 +3,7 @@ services:
 
   core:
     restart: always
-    container_name: dmoney-master
+    container_name: dmoney-core
     build: docker/core
     image: crypto/core
     ports:
