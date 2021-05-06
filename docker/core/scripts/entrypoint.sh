@@ -23,12 +23,12 @@ fi
 echo "[QUORUM_SET]"                                                             >> $HOME/core.cfg
 echo "THRESHOLD_PERCENT=$THRESHOLD_PERCENT"                                     >> $HOME/core.cfg
 if [ ! -z $VALIDATORS ] && [ $NODE_IS_VALIDATOR == 'true' ] ; then
-    echo "VALIDATORS=[${VALIDATORS:1:-1}, \"\$self\"]"                          >> $HOME/core.cfg
+    echo "VALIDATORS=[\"${VALIDATORS}\", \"\$self\"]"                          >> $HOME/core.cfg
 elif [[ ! -z $VALIDATORS ]]; then
-    echo "VALIDATORS=[${VALIDATORS:1:-1}]"                                      >> $HOME/core.cfg
+    echo "VALIDATORS=[\"${VALIDATORS}\"]"                                      >> $HOME/core.cfg
 elif [[ $NODE_IS_VALIDATOR == 'true' ]]; then
     echo "VALIDATORS=[\"\$self\"]"                                              >> $HOME/core.cfg
-fi
+fi 
 
 echo "[HISTORY.riak]"                                                           >> $HOME/core.cfg
 echo "get=\"/scripts/riakget.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> $HOME/core.cfg

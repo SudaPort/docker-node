@@ -165,3 +165,4 @@ fi
 echo "STELLAR_PEER_PORT=11635" >> ./.core1-cfg
 echo "STELLAR_HTTP_PORT=11636" >> ./.core1-cfg
 echo "NODE_NAME=fee" >> ./.core1-cfg
+echo "VALIDATORS=$VALIDATOR_KEY" >> ./.core2-cfg
