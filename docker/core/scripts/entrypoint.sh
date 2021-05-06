@@ -16,6 +16,9 @@ echo "NODE_IS_VALIDATOR=$NODE_IS_VALIDATOR"                                     
 echo "CATCHUP_COMPLETE=true"                                                    >> $HOME/core.cfg
 echo "FAILURE_SAFETY=0"                                                         >> $HOME/core.cfg
 echo "UNSAFE_QUORUM=true"                                                       >> $HOME/core.cfg
+echo "[[HOME_DOMAINS]]"                                                         >> $HOME/core.cfg
+echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                             >> $HOME/core.cfg
+echo "QUALITY=\"MEDIUM\""                                                       >> $HOME/core.cfg
 if [ ! -z "$PREFERRED_PEERS" ]; then
     echo "PREFERRED_PEERS=$PREFERRED_PEERS"                                     >> $HOME/core.cfg
 fi
@@ -31,7 +34,6 @@ if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
  echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                               >> $HOME/core.cfg
  echo "PUBLIC_KEY=\"${VALIDATORS}\""                                               >> $HOME/core.cfg
  echo "ADDRESS=\"${HOME_DOMAIN}:11645\""                                           >> $HOME/core.cfg
-
 fi
 
 echo "[HISTORY.riak]"                                                           >> $HOME/core.cfg
