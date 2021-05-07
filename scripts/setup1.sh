@@ -164,8 +164,8 @@ if [[ $PEERS != '' ]]; then
     echo "PREFERRED_PEERS=[${PEERS::-1}]" >> ./.core1-cfg
 fi
 
-echo "STELLAR_PEER_PORT=11635" >> ./.core1-cfg
-echo "STELLAR_HTTP_PORT=11636" >> ./.core1-cfg
+echo "STELLAR_PEER_PORT=11625" >> ./.core1-cfg
+echo "STELLAR_HTTP_PORT=11626" >> ./.core1-cfg
 echo "NODE_NAME=fee" >> ./.core1-cfg
 echo "VALIDATORS=$VALIDATOR_KEY" >> ./.core1-cfg
 read -ra key -p "${GREEN}HOME DOMAIN: ${NC}"
