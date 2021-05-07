@@ -53,62 +53,37 @@ strpos()
 
 while true
 do
-    read -ra key -p "${GREEN}MASTER Node Seed (leave empty to generate): ${NC}"
-    if [[ $key == '' ]]; then
-        break
-    fi
-        SEED=$key
-        PUBLIC=$valid
+    echo "${GREEN}MASTER Node Seed : ${MASTER_SEED} ${NC}"
+    
+        SEED=${MASTER_SEED}
+        PUBLIC=${MASTER_PUBLIC_KEY}
         break
 done
 
 while true
 do
-    read -ra key -p "${GREEN}Fee Agent Public Key: ${NC}"
-        COMISSION_KEY=$key
+    echo "${GREEN}Fee Agent Public Key:${COMISSION_PUBLIC_KEY} ${NC}"
+        COMISSION_KEY=${COMISSION_PUBLIC_KEY}
         break
 done
 
 while true
 do
-    read -ra key -p "${GREEN}Validator Public Key: ${NC}"
-        VALIDATOR_KEY=$key
+    echo "${GREEN}Validator Public Key: ${NODE_PUBLIC_KEY} ${NC}"
+        VALIDATOR_KEY=${NODE_PUBLIC_KEY}
         break
 done
 
 while true
 do
-    read -ra peer -p "${GREEN}Add preferred peer (host-ip:11645  host-ip:11635 empty line to finish): ${NC}"
-    if [[ $peer == '' ]]; then
-        break
-    fi
-
-    peer=${peer,,}
-    if [[ ! $peer =~ $HOST_REGEX ]]; then
-        echo "${RED}Error: Peer address [$peer] is not valid!${NC}"
-        continue
-    fi
-
-
-    peer=${peer#http://}
-    peer=${peer#https://}
-    peer=${peer%/}
-    peer=${peer// }
-    exists="$(strpos \"$PEERS\" \"$peer\")"
-    if [[ $exists != '' ]]; then
-        echo "${RED}Error: Peer address [$peer] already added!${NC}"
-        continue
-    fi
-
-    echo "$peer ${GREEN}added to preferred!${NC}"
-
-    PEERS+=\"$peer:11625\",
+    PEERS="[\"fee:11625\", \"validator:11625\"]"
+    echo "${GREEN}Add preferred peer : $PEERS${NC}"
 done
 
 while true
 do
-    read -ra peer -p "${GREEN}Riak Host: (with protocol and port: )${NC}"
-    peer=${peer,,}
+    echo "${GREEN}Riak Host: ${RIAK_PROTOCOL_HOST_PORT} ${NC}"
+    peer=${RIAK_PROTOCOL_HOST_PORT}
 
     if [[ ! $peer =~ $HOST_REGEX ]]
     then
