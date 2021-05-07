@@ -88,7 +88,7 @@ do
     if [[ ! $peer =~ $HOST_REGEX ]]
     then
         echo "${RED}Error: riak host [$peer] is not valid!${NC}"
-        continue
+        break
     fi
     peer=${peer%%+(/)}
 
