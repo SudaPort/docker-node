@@ -48,6 +48,10 @@ HOME_DOMAIN=$(grep HOME_DOMAIN ~/gurosh/seeds.txt | xargs)
 IFS='=' read -ra HOME_DOMAIN <<< "$HOME_DOMAIN"
 HOME_DOMAIN=${HOME_DOMAIN[1]}
 
+HOST_IP=$(grep HOST_IP ~/gurosh/seeds.txt | xargs)
+IFS='=' read -ra HOST_IP <<< "$HOST_IP"
+HOST_IP=${HOST_IP[1]}
+
 # Parse args
 for i in "$@"
 do
@@ -109,7 +113,7 @@ done
 
 while true
 do
-    PEERS="[\"fee:11625\", \"validator:11625\"]"
+    PEERS="[\"$HOST_IP:11635\", \"$HOST_IP:11645\"]"
     echo "${GREEN}Add preferred peer : $PEERS${NC}"
     break
 done

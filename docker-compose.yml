@@ -25,6 +25,8 @@ services:
     container_name: dmoney-fee
     build: docker/core
     image: crypto/fee
+    ports:
+      - "11635:11635"
     env_file:
       - .env
       - .core1-cfg
@@ -42,6 +44,8 @@ services:
     container_name: dmoney-validator
     build: docker/core
     image: crypto/validator
+    ports:
+      - "11645:11645"
     env_file:
       - .env
       - .core2-cfg
