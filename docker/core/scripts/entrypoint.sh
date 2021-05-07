@@ -37,7 +37,7 @@ fi
 echo "" >> $HOME/core.cfg
 if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
  echo "[[VALIDATORS]]"                                                             >> $HOME/core.cfg
- echo "NAME=\"validator\""                                                         >> $HOME/core.cfg
+ echo "NAME=\"validatornode\""                                                     >> $HOME/core.cfg
  echo "QUALITY=\"MEDIUM\""                                                         >> $HOME/core.cfg
  echo "PUBLIC_KEY=\"${VALIDATORS}\""                                               >> $HOME/core.cfg
  echo "ADDRESS=\"${HOME_DOMAIN}:11645\""                                           >> $HOME/core.cfg
