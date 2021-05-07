@@ -14,7 +14,7 @@ PEERS=''
 RIAK_HOST=''
 RIAK_USER=''
 RIAK_PASS=''
-
+HOME_DOMAIN=''
 
 MASTER_SEED=$(grep MASTER_SEED ~/gurosh/seeds.txt | xargs)
 IFS='=' read -ra MASTER_SEED <<< "$MASTER_SEED"
@@ -44,6 +44,9 @@ RIAK_PROTOCOL_HOST_PORT=$(grep RIAK_PROTOCOL_HOST_PORT ~/gurosh/seeds.txt | xarg
 IFS='=' read -ra RIAK_PROTOCOL_HOST_PORT <<< "$RIAK_PROTOCOL_HOST_PORT"
 RIAK_PROTOCOL_HOST_PORT=${RIAK_PROTOCOL_HOST_PORT[1]}
 
+HOME_DOMAIN=$(grep HOME_DOMAIN ~/gurosh/seeds.txt | xargs)
+IFS='=' read -ra HOME_DOMAIN <<< "$HOME_DOMAIN"
+HOME_DOMAIN=${HOME_DOMAIN[1]}
 
 # Parse args
 for i in "$@"
@@ -172,6 +175,4 @@ fi
 echo "STELLAR_PEER_PORT=11625" >> ./.core2-cfg
 echo "STELLAR_HTTP_PORT=11626" >> ./.core2-cfg
 echo "NODE_NAME=validator" >> ./.core2-cfg
-read -ra key -p "${GREEN}HOME DOMAIN: ${NC}"
-        HOME_DOMAIN=$key
 echo "HOME_DOMAIN=$HOME_DOMAIN" >> ./.core2-cfg
