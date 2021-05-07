@@ -77,6 +77,7 @@ while true
 do
     PEERS="[\"core:11625\", \"validator:11625\"]"
     echo "${GREEN}Add preferred peer : $PEERS ${NC}"
+    break
 done
 
 while true
