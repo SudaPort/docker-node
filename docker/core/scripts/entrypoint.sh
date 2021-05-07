@@ -4,29 +4,41 @@ DB_NAME="stellar"
 
 rm -f $HOME/core.cfg
 echo "DATABASE=\"postgresql://dbname=$DB_NAME$NODE_NAME user=$PGUSER password=$PGPASSWORD host=$PGHOST\"" >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "HTTP_PORT=$STELLAR_HTTP_PORT"                                             >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "PEER_PORT=$STELLAR_PEER_PORT"                                             >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "PUBLIC_HTTP_PORT=true"                                                    >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "PREFERRED_PEER_KEYS=[\"$ONE_KEY\", \"$TWO_KEY\"]"                         >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 # echo "BANK_MASTER_KEY=\"$BANK_MASTER_KEY\""                                     >> $HOME/core.cfg
 # echo "BANK_COMMISSION_KEY=\"$BANK_COMMISSION_KEY\""                             >> $HOME/core.cfg
 echo "NETWORK_PASSPHRASE=\"$NETWORK_PASSPHRASE\""                               >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "NODE_SEED=\"$NODE_SEED self\""                                            >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "NODE_IS_VALIDATOR=$NODE_IS_VALIDATOR"                                     >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "CATCHUP_COMPLETE=true"                                                    >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "FAILURE_SAFETY=0"                                                         >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "UNSAFE_QUORUM=true"                                                       >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 echo "[[HOME_DOMAINS]]"                                                         >> $HOME/core.cfg
 echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                             >> $HOME/core.cfg
 echo "QUALITY=\"MEDIUM\""                                                       >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 if [ ! -z "$PREFERRED_PEERS" ]; then
     echo "PREFERRED_PEERS=$PREFERRED_PEERS"                                     >> $HOME/core.cfg
 fi
-
+echo "" >> $HOME/core.cfg
 if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
     echo "NODE_HOME_DOMAIN=\"${HOME_DOMAIN}\""                                 >> $HOME/core.cfg
 fi 
-
+echo "" >> $HOME/core.cfg
 if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
  echo "[[VALIDATORS]]"                                                             >> $HOME/core.cfg
  echo "NAME=\"validator\""                                                         >> $HOME/core.cfg
@@ -35,7 +47,7 @@ if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
  echo "PUBLIC_KEY=\"${VALIDATORS}\""                                               >> $HOME/core.cfg
  echo "ADDRESS=\"${HOME_DOMAIN}:11645\""                                           >> $HOME/core.cfg
 fi
-
+echo "" >> $HOME/core.cfg
 echo "[HISTORY.riak]"                                                           >> $HOME/core.cfg
 echo "get=\"/scripts/riakget.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> $HOME/core.cfg
 echo "put=\"/scripts/riakput.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> $HOME/core.cfg
