@@ -165,7 +165,7 @@ echo "ONE_KEY=$MASTER_KEY" >> ./.core2-cfg
 echo "TWO_KEY=$COMISSION_KEY" >> ./.core2-cfg
 
 if [[ $PEERS != '' ]]; then
-    echo "PREFERRED_PEERS=[${PEERS::-1}]" >> ./.core2-cfg
+    echo "PREFERRED_PEERS=${PEERS}" >> ./.core2-cfg
 fi
 
 

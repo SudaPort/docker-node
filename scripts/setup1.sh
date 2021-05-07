@@ -165,7 +165,7 @@ echo "ONE_KEY=$MASTER_KEY" >> ./.core1-cfg
 echo "TWO_KEY=$VALIDATOR_KEY" >> ./.core1-cfg
 
 if [[ $PEERS != '' ]]; then
-    echo "PREFERRED_PEERS=[${PEERS::-1}]" >> ./.core1-cfg
+    echo "PREFERRED_PEERS=${PEERS}" >> ./.core1-cfg
 fi
 
 echo "STELLAR_PEER_PORT=11625" >> ./.core1-cfg

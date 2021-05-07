@@ -15,7 +15,6 @@ RIAK_HOST=''
 RIAK_USER=''
 RIAK_PASS=''
 
-
 MASTER_SEED=$(grep MASTER_SEED ~/gurosh/seeds.txt | xargs)
 IFS='=' read -ra MASTER_SEED <<< "$MASTER_SEED"
 MASTER_SEED=${MASTER_SEED[1]}
@@ -43,7 +42,6 @@ NODE_SEED=${NODE_SEED[1]}
 RIAK_PROTOCOL_HOST_PORT=$(grep RIAK_PROTOCOL_HOST_PORT ~/gurosh/seeds.txt | xargs)
 IFS='=' read -ra RIAK_PROTOCOL_HOST_PORT <<< "$RIAK_PROTOCOL_HOST_PORT"
 RIAK_PROTOCOL_HOST_PORT=${RIAK_PROTOCOL_HOST_PORT[1]}
-
 
 # Parse args
 for i in "$@"
@@ -166,7 +164,7 @@ echo "ONE_KEY=$VALIDATOR_KEY" >> ./.core-cfg
 echo "TWO_KEY=$COMISSION_KEY" >> ./.core-cfg
 
 if [[ $PEERS != '' ]]; then
-    echo "PREFERRED_PEERS=[${PEERS::-1}]" >> ./.core-cfg
+    echo "PREFERRED_PEERS=${PEERS}" >> ./.core-cfg
 fi
 
 echo "STELLAR_PEER_PORT=11625" >> ./.core-cfg
