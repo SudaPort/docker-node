@@ -27,10 +27,6 @@ echo "FAILURE_SAFETY=0"                                                         
 echo "" >> $HOME/core.cfg
 echo "UNSAFE_QUORUM=true"                                                       >> $HOME/core.cfg
 echo "" >> $HOME/core.cfg
-echo "[[HOME_DOMAINS]]"                                                         >> $HOME/core.cfg
-echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                             >> $HOME/core.cfg
-echo "QUALITY=\"MEDIUM\""                                                       >> $HOME/core.cfg
-echo "" >> $HOME/core.cfg
 if [ ! -z "$PREFERRED_PEERS" ]; then
     echo "PREFERRED_PEERS=$PREFERRED_PEERS"                                     >> $HOME/core.cfg
 fi
@@ -55,6 +51,12 @@ echo "mkdir=\"mkdir -p {0}\""                                                   
 #echo "get=\"cp /tmp/stellar-core/history/vs/{0} {1}\""                                        >> $HOME/core.cfg
 #echo "put=\"cp {0} /tmp/stellar-core/history/vs/{1}\""                                        >> $HOME/core.cfg
 #echo "mkdir=\"mkdir -p /tmp/stellar-core/history/vs/{0}\""                                    >> $HOME/core.cfg
+
+echo "" >> $HOME/core.cfg
+echo "[[HOME_DOMAINS]]"                                                         >> $HOME/core.cfg
+echo "HOME_DOMAIN=\"$HOME_DOMAIN\""                                             >> $HOME/core.cfg
+echo "QUALITY=\"MEDIUM\""                                                       >> $HOME/core.cfg
+echo "" >> $HOME/core.cfg
 
 TABLE_EXISTS=`psql -d $DB_NAME -A -c "SELECT count(*) from information_schema.tables WHERE table_name = 'accounts'" | head -2 | tail -1`
 
