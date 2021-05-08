@@ -12,13 +12,13 @@ services:
       - .env
       - .core-cfg
     links:
-      - postgres
+      - postgresstlr
     depends_on:
-      - postgres
+      - postgresstlr
     environment:
       PGUSER: "${POSTGRES_USER_ST}"
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
-      PGHOST: postgres
+      PGHOST: postgresstlr
 
   fee:
     restart: always
@@ -31,13 +31,13 @@ services:
       - .env
       - .core1-cfg
     links:
-      - postgres
+      - postgresstlr
     depends_on:
-      - postgres
+      - postgresstlr
     environment:
       PGUSER: "${POSTGRES_USER_ST}"
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
-      PGHOST: postgres     
+      PGHOST: postgresstlr     
 
   validator:
     restart: always
@@ -50,13 +50,13 @@ services:
       - .env
       - .core2-cfg
     links:
-      - postgres
+      - postgresstlr
     depends_on:
-      - postgres
+      - postgresstlr
     environment:
       PGUSER: "${POSTGRES_USER_ST}"
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
-      PGHOST: postgres
+      PGHOST: postgresstlr
 
   horizon: 
     restart: always
@@ -66,23 +66,23 @@ services:
     ports:
       - "8000:8000"
     links:
-      - postgres
+      - postgresstlr
       - redis
       - core
     depends_on:
-      - postgres
+      - postgresstlr
     env_file:
       - .core-cfg
     environment:
-      DATABASE_URL: "postgres://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgres/horizon?sslmode=disable"
-      STELLAR_CORE_DATABASE_URL: "postgres://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgres/stellar?sslmode=disable"
+      DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/horizon?sslmode=disable"
+      STELLAR_CORE_DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/stellarcore?sslmode=disable"
       NETWORK_PASSPHRASE: ${NETWORK_PASSPHRASE}
       STELLAR_CORE_URL: "http://core:11626"
       REDIS_URL: "redis://redis:6379"
       LOG_LEVEL: "info"
       INGEST: "true"
 
-  postgres:
+  postgresstlr:
     restart: always
     container_name: dmoney-postgres
     build: docker/postgres
