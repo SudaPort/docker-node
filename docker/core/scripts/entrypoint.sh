@@ -52,11 +52,13 @@ if [[ $NODE_IS_VALIDATOR != 'true' ]]; then
  echo "PUBLIC_KEY=\"${VALIDATORS}\""                                           >> core.cfg
 #  echo "ADDRESS=\"${HOME_DOMAIN}:11645\""                                     >> core.cfg
 fi
+chmod u+x /scripts/riakget.sh
+chmod u+x /scripts/riakput.sh
 echo "" >> core.cfg
-echo "[HISTORY.riak]"                                                                         >> core.cfg
-echo "get=\"/scripts/riakget.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> core.cfg
-echo "put=\"/scripts/riakput.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> core.cfg
-echo "mkdir=\"mkdir -p {0}\""                                                                 >> core.cfg
+echo "[HISTORY.riak]"                                                                          >> core.cfg
+echo "get=\"./scripts/riakget.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> core.cfg
+echo "put=\"./scripts/riakput.sh $RIAK_HOST $RIAK_BUCKET {0} {1} $RIAK_USER $RIAK_PASS\""      >> core.cfg
+echo "mkdir=\"mkdir -p {0}\""                                                                  >> core.cfg
 echo "" >> core.cfg
 # echo "[HISTORY.azure]"                                                                      >> core.cfg
 # echo "get=\"***\""                                                                          >> core.cfg
@@ -67,22 +69,18 @@ echo "" >> core.cfg
 #echo "put=\"cp {0} /tmp/stellar-core/history/vs/{1}\""                                       >> core.cfg
 #echo "mkdir=\"mkdir -p /tmp/stellar-core/history/vs/{0}\""                                   >> core.cfg
 
-src/stellar-core run
 TABLE_EXISTS=`psql -d $DB_NAME -A -c "SELECT count(*) from information_schema.tables WHERE table_name = 'accounts'" | head -2 | tail -1`
 
 if [[ $TABLE_EXISTS == 0 ]]; then
     echo "Initializing Dabatase"
     # --newhist flag should run prior to new-db!!! 
     #src/stellar-core --conf core.cfg --newhist local
-
-    if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-        # src/stellar-core http-command stellar-core --conf core.cfg 
-        # src/stellar-core newhist riak
-        src/stellar-core --conf core.cfg newhist riak
+ src/stellar-core --conf core.cfg
+    if [[ $NODE_IS_VALIDATOR == 'true' ]]; then 
+        src/stellar-core new-hist riak
+        # src/stellar-core new-hist azure
     fi
-    # src/stellar-core http-command stellar-core --conf core.cfg 
-    # src/stellar-core new-db
-    src/stellar-core --conf core.cfg new-db
+ src/stellar-core new-db
 elif [[ $TABLE_EXISTS == 1 ]]; then
     echo "DB Exists. Starting Core"
 else
@@ -90,10 +88,3 @@ else
     exit
 fi
 
-if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
-    # src/stellar-core http-command stellar-core --conf core.cfg 
-    # src/stellar-core new-db force-scp
-    src/stellar-core --conf core.cfg force-scp 
-fi
-# src/stellar-core http-command stellar-core --conf core.cfg
-src/stellar-core --conf core.cfg 
