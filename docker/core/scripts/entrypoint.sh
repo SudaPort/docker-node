@@ -71,7 +71,7 @@ echo "" >> core.cfg
 
 # Comment out if not new network
 src/stellar-core --conf core.cfg
-if [$NODE_NAME==core]; then
+if [[ $NODE_NAME == 'core' ]]; then
         src/stellar-core new-hist riak
         # src/stellar-core new-hist azure
 fi
