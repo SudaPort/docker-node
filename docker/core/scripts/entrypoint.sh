@@ -73,11 +73,11 @@ if [[ $TABLE_EXISTS == 0 ]]; then
     if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
         # src/stellar-core http-command stellar-core --conf $HOME/core.cfg 
         # src/stellar-core newhist riak
-        src/stellar-core --conf $HOME/core.cfg newhist riak
+        src/stellar-core run --conf $HOME/core.cfg newhist riak
     fi
     # src/stellar-core http-command stellar-core --conf $HOME/core.cfg 
     # src/stellar-core new-db
-    src/stellar-core --conf $HOME/core.cfg new-db
+    src/stellar-core run --conf $HOME/core.cfg new-db
 elif [[ $TABLE_EXISTS == 1 ]]; then
     echo "DB Exists. Starting Core"
 else
@@ -88,8 +88,7 @@ fi
 if [[ $NODE_IS_VALIDATOR == 'true' ]]; then
     # src/stellar-core http-command stellar-core --conf $HOME/core.cfg 
     # src/stellar-core new-db force-scp
-    src/stellar-core --conf $HOME/core.cfg force-scp 
+    src/stellar-core run --conf $HOME/core.cfg force-scp 
 fi
 # src/stellar-core http-command stellar-core --conf $HOME/core.cfg
-src/stellar-core --conf $HOME/core.cfg 
-
+src/stellar-core run --conf $HOME/core.cfg 
