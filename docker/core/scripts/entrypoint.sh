@@ -75,16 +75,18 @@ if [[ $NODE_NAME == 'core' ]]; then
         src/stellar-core new-hist riak
         # src/stellar-core new-hist azure
         src/stellar-core new-db
-fi
-if [[ $NODE_NAME == 'fee' ]]; then
-        src/stellar-core --conf core.cfg
-        src/stellar-core new-db
-fi
-if [[ $NODE_NAME == 'validator' ]]; then
-        src/stellar-core --conf core.cfg
-        src/stellar-core new-db
-fi
 
+elif [[ $NODE_NAME == 'fee' ]]; then
+        src/stellar-core --conf core.cfg
+        src/stellar-core new-db
+
+elif [[ $NODE_NAME == 'validator' ]]; then
+        src/stellar-core --conf core.cfg
+        src/stellar-core new-db
+else 
+       echo "Unknown node role..."
+       exit
+fi
 
 # Old code
 # TABLE_EXISTS=`psql -d $DB_NAME -A -c "SELECT count(*) from information_schema.tables WHERE table_name = 'accounts'" | head -2 | tail -1`
