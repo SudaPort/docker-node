@@ -68,7 +68,7 @@ echo "" >> core.cfg
 #echo "get=\"cp /tmp/stellar-core/history/vs/{0} {1}\""                                       >> core.cfg
 #echo "put=\"cp {0} /tmp/stellar-core/history/vs/{1}\""                                       >> core.cfg
 #echo "mkdir=\"mkdir -p /tmp/stellar-core/history/vs/{0}\""                                   >> core.cfg
-
+src/stellar-core --conf core.cfg
 # Comment out if not new network
 if [[ $NODE_NAME == 'core' ]]; then
         src/stellar-core --conf core.cfg
