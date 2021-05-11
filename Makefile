@@ -27,10 +27,10 @@ start: build
 keypair: build
 	docker run --rm crypto/core src/stellar-core gen-seed
 
-master: build
+core: build
 	./scripts/setup.sh 
 
-agent: build
+fee: build
 	./scripts/setup1.sh
 
 validator: build
