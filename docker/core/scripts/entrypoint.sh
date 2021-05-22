@@ -68,21 +68,18 @@ echo "" >> $HOME/core.cfg
 #echo "get=\"cp /tmp/stellar-core/history/vs/{0} {1}\""                                       >> $HOME/core.cfg
 #echo "put=\"cp {0} /tmp/stellar-core/history/vs/{1}\""                                       >> $HOME/core.cfg
 #echo "mkdir=\"mkdir -p /tmp/stellar-core/history/vs/{0}\""                                   >> $HOME/core.cfg
-src/stellar-core --conf $HOME/core.cfg
+
 # Comment out if not new network
 if [[ $NODE_NAME == 'core' ]]; then
-        src/stellar-core --conf $HOME/core.cfg
-        src/stellar-core new-hist riak
+        src/stellar-core new-hist riak --conf $HOME/core.cfg
         # src/stellar-core new-hist azure
         src/stellar-core new-db
 
 elif [[ $NODE_NAME == 'fee' ]]; then
-        src/stellar-core --conf $HOME/core.cfg
-        src/stellar-core new-db
+        src/stellar-core new-db --conf $HOME/core.cfg
 
 elif [[ $NODE_NAME == 'validator' ]]; then
-        src/stellar-core --conf $HOME/core.cfg
-        src/stellar-core new-db
+        src/stellar-core new-db --conf $HOME/core.cfg
 else 
        echo "Unknown node role..."
        exit
@@ -108,4 +105,4 @@ fi
 #     exit
 # fi
 
-src/stellar-core --conf $HOME/core.cfg
+src/stellar-core run --conf $HOME/core.cfg
