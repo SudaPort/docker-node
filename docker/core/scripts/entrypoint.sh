@@ -70,13 +70,13 @@ if [[ $NODE_NAME == 'core' ]]; then
         
         # src/stellar-core new-hist azure --conf $HOME/core.cfg
         # src/stellar-core new-db
-        src/stellar-core new-db azure --conf $HOME/core.cfg
+        src/stellar-core new-db --conf $HOME/core.cfg
 
 elif [[ $NODE_NAME == 'fee' ]]; then
 
         echo "[HISTORY.azure]"                                                                      >> $HOME/core.cfg
         echo "get=\"curl https://sandboxgurosh.blob.core.windows.net/sandboxhistory/{0} -o {1}\""   >> $HOME/core.cfg
-        # echo "put=\"azure storage blob upload {0} sandboxgurosh {1}\""                              >> $HOME/core.cfg
+        # echo "put=\  "azure storage blob upload {0} sandboxgurosh {1}\""                              >> $HOME/core.cfg
         
         src/stellar-core new-db --conf $HOME/core.cfg
 
@@ -87,8 +87,8 @@ elif [[ $NODE_NAME == 'validator' ]]; then
         echo "put=\"azure storage blob upload {0} sandboxgurosh {1}\""                              >> $HOME/core.cfg
  
         # src/stellar-core new-db --conf $HOME/core.cfg
-        src/stellar-core new-hist azure --conf $HOME/core.cfg
-        src/stellar-core new-db
+        src/stellar-core new-db --conf $HOME/core.cfg
+        src/stellar-core new-hist azure 
 else 
        echo "Unknown node role..."
        exit
