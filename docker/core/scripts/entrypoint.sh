@@ -13,8 +13,8 @@ echo "PUBLIC_HTTP_PORT=true"                                                    
 echo "" >> $HOME/core.cfg
 echo "PREFERRED_PEER_KEYS=[\"$ONE_KEY\", \"$TWO_KEY\"]"                         >> $HOME/core.cfg
 echo "" >> $HOME/core.cfg
-# echo "BANK_MASTER_KEY=\"$BANK_MASTER_KEY\""                                   >> $HOME/core.cfg
-# echo "BANK_COMMISSION_KEY=\"$BANK_COMMISSION_KEY\""                           >> $HOME/core.cfg
+echo "BANK_MASTER_KEY=\"$BANK_MASTER_KEY\""                                     >> $HOME/core.cfg
+echo "BANK_COMMISSION_KEY=\"$BANK_COMMISSION_KEY\""                             >> $HOME/core.cfg
 echo "NETWORK_PASSPHRASE=\"$NETWORK_PASSPHRASE\""                               >> $HOME/core.cfg
 echo "" >> $HOME/core.cfg
 echo "NODE_SEED=\"$NODE_SEED\""                                                 >> $HOME/core.cfg
