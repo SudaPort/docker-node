@@ -154,6 +154,7 @@ do
 done
 
 rm -f ./.core2-cfg
+rm -f ./.hz-cfg
 echo $'\n'
 echo "**************************************************************************"
 echo "${GREEN}Public Key: $PUBLIC ${NC}" 
