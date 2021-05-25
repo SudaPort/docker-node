@@ -182,5 +182,5 @@ echo "NODE_NAME=core" >> ./.core-cfg
 echo "VALIDATORS=$VALIDATOR_KEY" >> ./.core-cfg
 echo "HOME_DOMAIN=$HOME_DOMAIN" >> ./.core-cfg
 
-echo "BANK_MASTER_KEY=$MASTER_PUBLIC_KEY"   >> ./.core-cfg
-echo "BANK_COMMISSION_KEY=$COMISSION_PUBLIC_KEY"   >> ./.core-cfg
+echo "BANK_MASTER_KEY=$MASTER_PUBLIC_KEY"   >> ./.hz-cfg
+echo "BANK_COMMISSION_KEY=$COMISSION_PUBLIC_KEY"   >> ./.hz-cfg

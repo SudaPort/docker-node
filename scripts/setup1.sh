@@ -181,5 +181,5 @@ echo "NODE_NAME=fee" >> ./.core1-cfg
 echo "VALIDATORS=$VALIDATOR_KEY" >> ./.core1-cfg
 echo "HOME_DOMAIN=$HOME_DOMAIN" >> ./.core1-cfg
 
-echo "BANK_MASTER_KEY=$MASTER_PUBLIC_KEY"   >> ./.core-cfg
-echo "BANK_COMMISSION_KEY=$COMISSION_PUBLIC_KEY"   >> ./.core-cfg
+echo "BANK_MASTER_KEY=$MASTER_PUBLIC_KEY"   >> ./.hz-cfg
+echo "BANK_COMMISSION_KEY=$COMISSION_PUBLIC_KEY"   >> ./.hz-cfg

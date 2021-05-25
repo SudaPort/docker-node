@@ -181,5 +181,5 @@ echo "STELLAR_HTTP_PORT=11626" >> ./.core2-cfg
 echo "NODE_NAME=validator" >> ./.core2-cfg
 echo "HOME_DOMAIN=$HOME_DOMAIN" >> ./.core2-cfg
 
-echo "BANK_MASTER_KEY=$MASTER_PUBLIC_KEY"   >> ./.core-cfg
-echo "BANK_COMMISSION_KEY=$COMISSION_PUBLIC_KEY"   >> ./.core-cfg
+echo "BANK_MASTER_KEY=$MASTER_PUBLIC_KEY"   >> ./.hz-cfg
+echo "BANK_COMMISSION_KEY=$COMISSION_PUBLIC_KEY"   >> ./.hz-cfg

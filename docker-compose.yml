@@ -73,6 +73,7 @@ services:
       - postgresstlr
     env_file:
       - .core-cfg
+      - .hz-cfg
     environment:
       DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/horizon?sslmode=disable"
       STELLAR_CORE_DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/stellarcore?sslmode=disable"
