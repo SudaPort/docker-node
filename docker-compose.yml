@@ -82,8 +82,6 @@ services:
       REDIS_URL: "redis://redis:6379"
       LOG_LEVEL: "info"
       INGEST: "true"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 
   postgresstlr:
     restart: always
