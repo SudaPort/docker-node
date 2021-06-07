@@ -78,8 +78,8 @@ services:
       DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/horizon?sslmode=disable"
       STELLAR_CORE_DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/stellarcore?sslmode=disable"
       NETWORK_PASSPHRASE: ${NETWORK_PASSPHRASE}
-      STELLAR_CORE_URL: "http://172.17.0.1:11626"
-      REDIS_URL: "redis://172.17.0.1:6379"
+      STELLAR_CORE_URL: "http://20.74.155.8:11626"
+      REDIS_URL: "redis://20.74.155.8:6379"
       LOG_LEVEL: "info"
       INGEST: "true"
 
