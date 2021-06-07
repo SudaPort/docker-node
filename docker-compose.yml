@@ -78,8 +78,8 @@ services:
       DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/horizon?sslmode=disable"
       STELLAR_CORE_DATABASE_URL: "postgresstlr://${POSTGRES_USER_ST}:${POSTGRES_PASSWORD_ST}@postgresstlr/stellarcore?sslmode=disable"
       NETWORK_PASSPHRASE: ${NETWORK_PASSPHRASE}
-      STELLAR_CORE_URL: "http://20.74.155.8:11626"
-      REDIS_URL: "redis://20.74.155.8:6379"
+      STELLAR_CORE_URL: "http://core:11626"
+      REDIS_URL: "redis://redis:6379"
       LOG_LEVEL: "info"
       INGEST: "true"
 
@@ -89,7 +89,7 @@ services:
     build: docker/postgres
     image: crypto/postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - storage:/var/lib/postgresql/data
     environment:
