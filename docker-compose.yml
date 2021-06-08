@@ -21,7 +21,8 @@ services:
       PGHOST: postgresstlr
     networks:
         docker0:
-        ipv4_address: 172.17.0.22
+          external: true
+          ipv4_address: 172.17.0.22
 
   fee:
     restart: always
@@ -43,7 +44,8 @@ services:
       PGHOST: postgresstlr    
     networks:
         docker0:
-        ipv4_address: 172.17.0.23 
+          external: true
+          ipv4_address: 172.17.0.23 
 
   validator:
     restart: always
@@ -65,7 +67,8 @@ services:
       PGHOST: postgresstlr
     networks:
         docker0:
-        ipv4_address: 172.17.0.21
+          external: true
+          ipv4_address: 172.17.0.21
 
   horizon: 
     restart: always
@@ -93,7 +96,8 @@ services:
       INGEST: "true"
     networks:
         docker0:
-        ipv4_address: 172.17.0.20
+          external: true
+          ipv4_address: 172.17.0.20
 
   postgresstlr:
     restart: always
@@ -110,7 +114,8 @@ services:
       POSTGRES_USER: "${POSTGRES_USER_ST}" 
     networks:
         docker0:
-        ipv4_address: 172.17.0.24
+          external: true
+          ipv4_address: 172.17.0.24
 
   redis:
     restart: always
@@ -118,7 +123,8 @@ services:
     image: redis:3.2
     networks:
         docker0:
-        ipv4_address: 172.17.0.25
+          external: true
+          ipv4_address: 172.17.0.25
 
 volumes:
   storage: 
