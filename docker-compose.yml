@@ -23,7 +23,7 @@ services:
       default:
         external:
           name: guroshnet
-            ipv4_address: 172.18.0.22
+            ipv4_address: 172.72.0.22
 
   fee:
     restart: always
@@ -47,7 +47,7 @@ services:
       default:
         external:
           name: guroshnet
-            ipv4_address: 172.18.0.23 
+            ipv4_address: 172.72.0.23 
 
   validator:
     restart: always
@@ -71,7 +71,7 @@ services:
       default:
         external:
           name: guroshnet
-            ipv4_address: 172.18.0.21
+            ipv4_address: 172.72.0.21
 
   horizon: 
     restart: always
@@ -101,7 +101,7 @@ services:
       default:
         external:
           name: guroshnet
-            ipv4_address: 172.18.0.20
+            ipv4_address: 172.72.0.20
 
   postgresstlr:
     restart: always
@@ -120,7 +120,7 @@ services:
       default:
         external:
           name: guroshnet
-            ipv4_address: 172.18.0.24
+            ipv4_address: 172.72.0.24
 
   redis:
     restart: always
@@ -130,7 +130,7 @@ services:
       default:
         external:
           name: guroshnet
-            ipv4_address: 172.18.0.25
+            ipv4_address: 172.72.0.25
 
 volumes:
   storage: 
