@@ -21,7 +21,7 @@ services:
       PGHOST: postgresstlr
     networks:
       default:
-        external:
+        external: true
           name: guroshnet
 
   fee:
@@ -44,7 +44,7 @@ services:
       PGHOST: postgresstlr    
     networks:
       default:
-        external:
+        external: true
           name: guroshnet
 
   validator:
@@ -67,7 +67,7 @@ services:
       PGHOST: postgresstlr
     networks:
       default:
-        external:
+        external: true
           name: guroshnet
 
   horizon: 
@@ -96,7 +96,7 @@ services:
       INGEST: "true"
     networks:
       default:
-        external:
+        external: true
           name: guroshnet
 
   postgresstlr:
@@ -114,7 +114,7 @@ services:
       POSTGRES_USER: "${POSTGRES_USER_ST}" 
     networks:
       default:
-        external:
+        external: true
           name: guroshnet
 
   redis:
@@ -123,7 +123,7 @@ services:
     image: redis:3.2
     networks:
       default:
-        external:
+        external: true
           name: guroshnet
 
 volumes:
