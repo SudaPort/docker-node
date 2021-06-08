@@ -19,6 +19,9 @@ services:
       PGUSER: "${POSTGRES_USER_ST}"
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgresstlr
+    networks:
+        docker0:
+        ipv4_address: 172.17.0.22
 
   fee:
     restart: always
@@ -37,7 +40,10 @@ services:
     environment:
       PGUSER: "${POSTGRES_USER_ST}"
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
-      PGHOST: postgresstlr     
+      PGHOST: postgresstlr    
+    networks:
+        docker0:
+        ipv4_address: 172.17.0.23 
 
   validator:
     restart: always
@@ -57,6 +63,9 @@ services:
       PGUSER: "${POSTGRES_USER_ST}"
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgresstlr
+    networks:
+        docker0:
+        ipv4_address: 172.17.0.21
 
   horizon: 
     restart: always
@@ -82,6 +91,9 @@ services:
       REDIS_URL: "redis://redis:6379"
       LOG_LEVEL: "info"
       INGEST: "true"
+    networks:
+        docker0:
+        ipv4_address: 172.17.0.20
 
   postgresstlr:
     restart: always
@@ -96,11 +108,17 @@ services:
       PGDATA: '/var/lib/postgresql/data'
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD_ST}"
       POSTGRES_USER: "${POSTGRES_USER_ST}" 
+    networks:
+        docker0:
+        ipv4_address: 172.17.0.24
 
   redis:
     restart: always
     container_name: dmoney-redis
     image: redis:3.2
+    networks:
+        docker0:
+        ipv4_address: 172.17.0.25
 
 volumes:
   storage: 
