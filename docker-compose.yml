@@ -20,8 +20,10 @@ services:
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgresstlr
     networks:
-        docker0:
-         - ipv4_address: 172.17.0.22
+      default:
+        external:
+          name: guroshnet
+            ipv4_address: 172.18.0.22
 
   fee:
     restart: always
@@ -42,8 +44,10 @@ services:
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgresstlr    
     networks:
-        docker0:
-         - ipv4_address: 172.17.0.23 
+      default:
+        external:
+          name: guroshnet
+            ipv4_address: 172.18.0.23 
 
   validator:
     restart: always
@@ -64,8 +68,10 @@ services:
       PGPASSWORD: "${POSTGRES_PASSWORD_ST}"
       PGHOST: postgresstlr
     networks:
-        docker0:
-         - ipv4_address: 172.17.0.21
+      default:
+        external:
+          name: guroshnet
+            ipv4_address: 172.18.0.21
 
   horizon: 
     restart: always
@@ -92,8 +98,10 @@ services:
       LOG_LEVEL: "info"
       INGEST: "true"
     networks:
-        docker0:
-         - ipv4_address: 172.17.0.20
+      default:
+        external:
+          name: guroshnet
+            ipv4_address: 172.18.0.20
 
   postgresstlr:
     restart: always
@@ -109,16 +117,20 @@ services:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD_ST}"
       POSTGRES_USER: "${POSTGRES_USER_ST}" 
     networks:
-        docker0:
-         - ipv4_address: 172.17.0.24
+      default:
+        external:
+          name: guroshnet
+            ipv4_address: 172.18.0.24
 
   redis:
     restart: always
     container_name: dmoney-redis
     image: redis:3.2
     networks:
-        docker0:
-         - ipv4_address: 172.17.0.25
+      default:
+        external:
+          name: guroshnet
+            ipv4_address: 172.18.0.25
 
 volumes:
   storage: 
