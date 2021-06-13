@@ -75,7 +75,7 @@ services:
     ports:
       - "8000:8000"
     links:
-      - postgresstlr
+      # - postgresstlr
       - redis
       - core
     depends_on:
