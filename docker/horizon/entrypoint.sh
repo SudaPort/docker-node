@@ -1,4 +1,5 @@
 #!/bin/bash
 
-bin/horizon --help
+bin/horizon --db-url
+
 bin/horizon
